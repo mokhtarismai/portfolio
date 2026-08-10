@@ -19,8 +19,6 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      
-
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
@@ -103,8 +101,8 @@ const Hero = () => {
           </Link>
 
           <a
-            href="/Mokhtar-Ismail-CV.pdf"
-            download="Mokhtar-Ismail-CV.pdf"
+            href="/Mokhtar_Ismail_CV.pdf"
+            download="Mokhtar_Ismail_CV.pdf"
             className="flex items-center gap-2 px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium hover:border-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             <HiDownload size={18} />

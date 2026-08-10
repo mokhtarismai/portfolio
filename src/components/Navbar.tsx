@@ -40,7 +40,7 @@ const Navbar = () => {
         });
       },
       {
-        rootMargin: "-40% 0px -55% 0px", // بتعتبر السكشن "أكتيف" لما يبقى في المنتصف تقريبًا
+        rootMargin: "-40% 0px -55% 0px",
         threshold: 0,
       }
     );
@@ -65,8 +65,7 @@ const Navbar = () => {
           duration={600}
           className="cursor-pointer text-xl font-bold text-gray-900 dark:text-white select-none whitespace-nowrap"
         >
-          <span className="text-blue-600 dark:text-blue-400">M</span>
-          K
+          <span className="text-blue-600 dark:text-blue-400">M</span>K
         </Link>
 
         {/* Desktop Links */}
@@ -93,9 +92,9 @@ const Navbar = () => {
         {/* Right Side: Resume + Theme Toggle + Mobile Button */}
         <div className="flex items-center gap-3">
           <a
-            href="/Mokhtar-Ismail-CV.pdf"
-            download="Mokhtar-Ismail-CV.pdf"
-            className="flex sm:flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/50 dark:border-blue-400/50 text-blue-600 dark:text-blue-400 text-sm font-medium hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-colors"
+            href="/Mokhtar_Ismail_CV.pdf"
+            download="Mokhtar_Ismail_CV.pdf"
+            className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/50 dark:border-blue-400/50 text-blue-600 dark:text-blue-400 text-sm font-medium hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-colors"
           >
             <HiDownload size={15} />
             Resume
@@ -120,70 +119,74 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-<AnimatePresence>
-  {isOpen && (
-    <motion.div
-      initial={{ opacity: 0, y: -10, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -10, scale: 0.98 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
-      className="md:hidden overflow-hidden mt-3 rounded-3xl bg-white/80 dark:bg-gray-950/80 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(59,130,246,0.15)] p-2"
-    >
-      <ul className="space-y-1">
-        {navLinks.map((link, index) => {
-          const isActive = activeSection === link.to;
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="md:hidden overflow-hidden mt-3 rounded-3xl bg-white/80 dark:bg-gray-950/80 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(59,130,246,0.15)] p-2"
+          >
+            <ul className="space-y-1">
+              {navLinks.map((link, index) => {
+                const isActive = activeSection === link.to;
 
-          return (
-            <motion.li
-              key={link.to}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 5 }}
-              transition={{ duration: 0.2, delay: index * 0.04 }}
-            >
-              <Link
-                to={link.to}
-                smooth={true}
-                duration={600}
-                offset={-100}
+                return (
+                  <motion.li
+                    key={link.to}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 5 }}
+                    transition={{ duration: 0.2, delay: index * 0.04 }}
+                  >
+                    <Link
+                      to={link.to}
+                      smooth={true}
+                      duration={600}
+                      offset={-100}
+                      onClick={() => setIsOpen(false)}
+                      className={`relative cursor-pointer flex items-center justify-between px-5 py-3 rounded-2xl font-medium text-sm transition-all duration-200 ${
+                        isActive
+                          ? "text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-500/10 font-semibold"
+                          : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-gray-900/40"
+                      }`}
+                    >
+                      <span>{link.name}</span>
+
+                      {/* Active section indicator */}
+                      {isActive && (
+                        <motion.span
+                          layoutId="activeIndicator"
+                          className="w-1.5 h-5 rounded-full bg-blue-600 dark:bg-blue-400"
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 30,
+                          }}
+                        />
+                      )}
+                    </Link>
+                  </motion.li>
+                );
+              })}
+            </ul>
+
+            {/* Mobile Resume Link */}
+            <div className="mt-2 pt-2 border-t border-gray-200/50 dark:border-gray-800/50 px-1">
+              <a
+                href="/Mokhtar_Ismail_CV.pdf"
+                download="Mokhtar_Ismail_CV.pdf"
                 onClick={() => setIsOpen(false)}
-                className={`relative cursor-pointer flex items-center justify-between px-5 py-3 rounded-2xl font-medium text-sm transition-all duration-200 ${
-                  isActive
-                    ? "text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-500/10 font-semibold"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-gray-900/40"
-                }`}
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-medium shadow-md shadow-blue-500/20 active:scale-[0.98] transition-all"
               >
-                <span>{link.name}</span>
-
-                {/* شريط مؤشر للقسم النشط */}
-                {isActive && (
-                  <motion.span
-                    layoutId="activeIndicator"
-                    className="w-1.5 h-5 rounded-full bg-blue-600 dark:bg-blue-400"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </Link>
-            </motion.li>
-          );
-        })}
-      </ul>
-
-      {/* زر الـ Resume داخل الموبايل مسبوق بفاصل أنيق */}
-      <div className="mt-2 pt-2 border-t border-gray-200/50 dark:border-gray-800/50 px-1">
-        <a
-          href="/Mokhtar-Ismail-CV.pdf"
-          download="Mokhtar-Ismail-CV.pdf"
-          onClick={() => setIsOpen(false)}
-          className="flex items-center justify-center gap-2 w-full py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-medium shadow-md shadow-blue-500/20 active:scale-[0.98] transition-all"
-        >
-          <HiDownload size={16} />
-          <span>Download Resume</span>
-        </a>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                <HiDownload size={16} />
+                <span>Download Resume</span>
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
