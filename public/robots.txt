@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mokhtar-ismail.vercel.app/sitemap.xml
