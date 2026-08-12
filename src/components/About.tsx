@@ -19,8 +19,8 @@ const STATEMENT =
   "I'm Mokhtar, a Frontend Developer who turns ideas into fast, clean, and reliable interfaces using React and Next.js.";
 
 const START_OPACITY = 0.2;
-const SPREAD = 0.8;
-const WORD_DURATION = 0.2;
+const SPREAD = 0.55;
+const WORD_DURATION = 0.15;
 
 const techStack = [
   "React",
@@ -33,7 +33,7 @@ const techStack = [
 ];
 
 const stats = [
-  { value: "3+", label: "Projects Shipped", sub: "Production ready" },
+  { value: "7+", label: "Projects Shipped", sub: "Production ready" },
   { value: "2026", label: "Graduation Year", sub: "Zagazig University" },
   { value: "100%", label: "Focus on Detail", sub: "Pixel Perfect UI" },
 ];
@@ -121,7 +121,7 @@ const About = () => {
     <section
       ref={sectionRef}
       id="about"
-      className="relative w-full min-h-[220vh]"
+      className="relative w-full min-h-[260vh] sm:min-h-[220vh]"
     >
       <div className="sticky top-0 w-full flex items-center justify-center overflow-hidden px-4 sm:px-8 py-20">
         <AboutBackground />

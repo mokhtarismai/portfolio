@@ -39,6 +39,14 @@
       href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
+    <script>
+    // يفحص الثيم المفضل أو المحفوظ في localStore قبل تحليل باقي الصفحة
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   </head>
   <body>
     <div id="root"></div>
